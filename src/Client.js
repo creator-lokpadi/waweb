@@ -202,7 +202,7 @@ class Client extends EventEmitter {
                 } catch {
 
                 }
-            }, 60000)
+            }, 60000 * 10)
         }
 
 
