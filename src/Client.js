@@ -181,21 +181,24 @@ class Client extends EventEmitter {
         }*/
         
         if (this.options.clearSessions) {
+          
+        
             setInterval(async () => {
-                await exec('rm -rf .mywajs_auth/session/Default/Cache')
+              console.log('CLEAR sessions :V')
+                await exec('rm -rf .mywajs_auth/Default/Cache')
                 try {
-                    await Fs.rmSync('.mywajs_auth/session/Default/Code Cache', { recursive: true })
+                    await Fs.rmSync('.mywajs_auth/Default/Code Cache', { recursive: true })
                 } catch {
 
                 }
-                await exec('rm -rf .mywajs_auth/session/Default/DawnCache')
+                await exec('rm -rf .mywajs_auth/Default/DawnCache')
                 try {
-                    await Fs.rmSync('.mywajs_auth/session/Default/Service Worker/CacheStorage', { recursive: true })
+                    await Fs.rmSync('.mywajs_auth/Default/Service Worker/CacheStorage', { recursive: true })
                 } catch {
 
                 }
                 try {
-                    await Fs.rmSync('.mywajs_auth/session/Default/Service Worker/ScriptCache', { recursive: true })
+                    await Fs.rmSync('.mywajs_auth/Default/Service Worker/ScriptCache', { recursive: true })
                 } catch {
 
                 }
