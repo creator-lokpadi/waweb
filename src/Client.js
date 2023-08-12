@@ -157,6 +157,7 @@ class Client extends EventEmitter {
 
         /* clear session v2 */
         /* please cronjob client.clearAllMsg() to clear msg all*/
+        /*
         if (this.options.clearSessions) {
             setInterval(async () => {
                 await exec('rm -rf .mywajs_auth/session/Default/Cache')
@@ -173,6 +174,28 @@ class Client extends EventEmitter {
                 }
                 try {
                     await Fs.rmdirSync('.mywajs_auth/session/Default/Service Worker/ScriptCache', { recursive: true })
+                } catch {
+
+                }
+            }, 60000)
+        }*/
+        
+        if (this.options.clearSessions) {
+            setInterval(async () => {
+                await exec('rm -rf .mywajs_auth/session/Default/Cache')
+                try {
+                    await Fs.rmSync('.mywajs_auth/session/Default/Code Cache', { recursive: true })
+                } catch {
+
+                }
+                await exec('rm -rf .mywajs_auth/session/Default/DawnCache')
+                try {
+                    await Fs.rmSync('.mywajs_auth/session/Default/Service Worker/CacheStorage', { recursive: true })
+                } catch {
+
+                }
+                try {
+                    await Fs.rmSync('.mywajs_auth/session/Default/Service Worker/ScriptCache', { recursive: true })
                 } catch {
 
                 }
